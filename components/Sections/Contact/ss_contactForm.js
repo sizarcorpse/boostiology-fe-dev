@@ -69,7 +69,6 @@ const Ss_ContactForm = (props) => {
                     name={item.name}
                     required
                     id={item.idName}
-                    autoFocus
                     autoComplete="off"
                     placeholder={item.placeholder}
                     className={localClasses.TextField}
