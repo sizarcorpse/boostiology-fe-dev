@@ -64,9 +64,7 @@ const Ss_ContactForm = (props) => {
                     InputLabelProps={{
                       shrink: false,
                     }}
-                    InputProps={{
-                      disableUnderline: true,
-                    }}
+                    disableunderline="true"
                     variant={item.variant}
                     name={item.name}
                     required

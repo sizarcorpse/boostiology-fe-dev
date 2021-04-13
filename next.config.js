@@ -8,4 +8,7 @@ module.exports = {
   images: {
     domains: ["boostiology.s3.amazonaws.com", "localhost"],
   },
+  future: {
+    webpack5: true,
+  },
 };

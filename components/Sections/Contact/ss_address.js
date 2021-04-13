@@ -94,20 +94,20 @@ const Ss_Address = (props) => {
       <Box display="flex" my={6}>
         {social.map((item, i) =>
           item.provider === "Facebook" ? (
-            <Box>
-              <IconButton key={i} className={localClasses.iconButton}>
+            <Box key={i}>
+              <IconButton className={localClasses.iconButton}>
                 <FacebookIcon className={localClasses.icon} />
               </IconButton>
             </Box>
           ) : item.provider === "Instagram" ? (
-            <Box>
-              <IconButton key={i} className={localClasses.iconButton}>
+            <Box key={i}>
+              <IconButton className={localClasses.iconButton}>
                 <InstagramIcon className={localClasses.icon} />
               </IconButton>
             </Box>
           ) : item.provider === "Twitter" ? (
-            <Box>
-              <IconButton key={i} className={localClasses.iconButton}>
+            <Box key={i}>
+              <IconButton className={localClasses.iconButton}>
                 <TwitterIcon className={localClasses.icon} />
               </IconButton>
             </Box>
