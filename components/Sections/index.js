@@ -7,5 +7,5 @@ export { default as ClientSection } from "./Client";
 export { default as ServiceSection } from "./Service";
 export { default as TimerSection } from "./Timer";
 export { default as PriceSection } from "./Price";
-export { default as TestimonialSection } from "./Testimonial";
+export { default as TestimonialSection } from "./Testimonial_";
 export { default as ContactSection } from "./Contact";
