@@ -1,0 +1,11 @@
+export { default as HomeSection } from "./Home";
+export { default as HeroSection } from "./Hero";
+export { default as AboutSection } from "./About";
+export { default as TeamSection } from "./Team";
+export { default as PortfolioSection } from "./Portfolio";
+export { default as ClientSection } from "./Client";
+export { default as ServiceSection } from "./Service";
+export { default as TimerSection } from "./Timer";
+export { default as PriceSection } from "./Price";
+export { default as TestimonialSection } from "./Testimonial";
+export { default as ContactSection } from "./Contact";

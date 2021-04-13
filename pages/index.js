@@ -1,65 +1,133 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+// #next :
+// import getConfig from 'next/config';
+// import {useRouter} from 'next/router';
+// import Link from 'next/link';
+// import Image from 'next/image';
+// import useSWR, { trigger, mutate } from 'swr';
+// #contexts :
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+// #hooks :
+import { FetchHomePage, FetchContactPage } from "actions/FetchPage";
+import {
+  FetchAbout,
+  FetchTeam,
+  FetchService,
+  FetchPrice,
+  FetchTestimonial,
+} from "actions/FetchContent";
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+// #components :
+import {
+  HomeSection,
+  HeroSection,
+  AboutSection,
+  PortfolioSection,
+  TeamSection,
+  ClientSection,
+  ServiceSection,
+  TimerSection,
+  PriceSection,
+  TestimonialSection,
+  ContactSection,
+} from "components/Sections";
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+// #validations :
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+// #material-ui :
+import { ThemeDistributor } from "styles/ThemeDistributor";
+import {
+  withStyles,
+  makeStyles,
+  Grid,
+  Paper,
+  CssBaseline,
+} from "@material-ui/core";
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+// #other :
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+export async function getStaticProps(context) {
+  const homePage = await FetchHomePage({ context: context });
+  const abouts = await FetchAbout({ context: context });
+  const teams = await FetchTeam({ context: context });
+  const services = await FetchService({ context: context });
+  const prices = await FetchPrice({ context: context });
+  const testimonials = await FetchTestimonial({ context: context });
+  const ContactPage = await FetchContactPage({ context: context });
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+  return {
+    props: {
+      homePage,
+      abouts,
+      teams,
+      services,
+      prices,
+      testimonials,
+      ContactPage,
+    },
+  };
 }
+
+const useStyles = makeStyles({
+  root: {},
+});
+
+const HomePage = (props) => {
+  const {
+    classes,
+    homePage: {
+      landing,
+      description,
+      hero,
+      about,
+      team,
+      portfolio,
+      client,
+      service,
+      timer,
+      price,
+      testimonial,
+    },
+    abouts,
+    teams,
+    services,
+    prices,
+    testimonials,
+    ContactPage: { contact, address, form, submit },
+  } = props;
+  const localClasses = useStyles();
+
+  return (
+    <Grid container>
+      <CssBaseline />
+      <Grid item xs={12}>
+        <Paper>
+          <HomeSection landing={landing} description={description} />
+          <HeroSection hero={hero} />
+          <AboutSection about={about} abouts={abouts} />
+          <PortfolioSection portfolio={portfolio} />
+          <TeamSection team={team} teams={teams} />
+          <ClientSection client={client} />
+          <ServiceSection service={service} services={services} />
+          <TimerSection timer={timer} />
+          <PriceSection price={price} prices={prices} />
+          <TestimonialSection
+            testimonial={testimonial}
+            testimonials={testimonials}
+          />
+          <ContactSection
+            contact={contact}
+            form={form}
+            submit={submit}
+            address={address}
+          />
+        </Paper>
+      </Grid>
+    </Grid>
+  );
+};
+export default withStyles(
+  (theme) => ({
+    ...ThemeDistributor(theme),
+  }),
+  { withTheme: true }
+)(HomePage);
