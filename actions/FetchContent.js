@@ -37,6 +37,17 @@ export const FetchPrice = async () => {
 
   return prices;
 };
+
+export const FetchPortfolio = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/portfolios
+  `);
+  const portfolios = await res.json();
+
+  return portfolios;
+};
+
 export const FetchTestimonial = async () => {
   const { publicRuntimeConfig } = getConfig();
 

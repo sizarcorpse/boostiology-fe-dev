@@ -14,6 +14,7 @@ import {
   FetchService,
   FetchPrice,
   FetchTestimonial,
+  FetchPortfolio,
 } from "actions/FetchContent";
 
 // #components :
@@ -50,6 +51,7 @@ export async function getStaticProps(context) {
   const abouts = await FetchAbout({ context: context });
   const teams = await FetchTeam({ context: context });
   const services = await FetchService({ context: context });
+  const portfolios = await FetchPortfolio({ context: context });
   const prices = await FetchPrice({ context: context });
   const testimonials = await FetchTestimonial({ context: context });
   const ContactPage = await FetchContactPage({ context: context });
@@ -63,6 +65,7 @@ export async function getStaticProps(context) {
       prices,
       testimonials,
       ContactPage,
+      portfolios,
     },
   };
 }
@@ -89,6 +92,7 @@ const HomePage = (props) => {
     },
     abouts,
     teams,
+    portfolios,
     services,
     prices,
     testimonials,
@@ -97,14 +101,14 @@ const HomePage = (props) => {
   const localClasses = useStyles();
 
   return (
-    <Grid container>
+    <Grid container component="main">
       <CssBaseline />
       <Grid item xs={12}>
         <Paper>
           <HomeSection landing={landing} description={description} />
           <HeroSection hero={hero} />
           <AboutSection about={about} abouts={abouts} />
-          <PortfolioSection portfolio={portfolio} />
+          <PortfolioSection portfolio={portfolio} portfolios={portfolios} />
           <TeamSection team={team} teams={teams} />
           <ClientSection client={client} />
           <ServiceSection service={service} services={services} />

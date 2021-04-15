@@ -38,7 +38,12 @@ const Ss_Address = (props) => {
   const localClasses = useStyles();
 
   return (
-    <Box py={5} px={5}>
+    <Box
+      py={5}
+      px={{ xs: 1, sm: 3, md: 5, lg: 4, xl: 5 }}
+      maxWidth={600}
+      mx={"auto"}
+    >
       <Box>
         <Typography variant="body1" className={localClasses.title}>
           {title}

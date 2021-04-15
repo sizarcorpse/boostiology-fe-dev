@@ -9,8 +9,8 @@
 // #hooks :
 import { useImageUrl } from "utils/useImageUrl";
 // #components :
-import { BwSectionName } from "components/UI";
-import { BwTestimonialCard } from "components/UI";
+import { BwSectionName, BwTestimonialCard } from "components/UI";
+
 // #validations :
 
 // #material-ui :
@@ -20,9 +20,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
-  Typography,
-  Container,
+  withWidth,
 } from "@material-ui/core";
 
 // #other :
@@ -43,6 +41,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const TestimonialSection = (props) => {
   const {
     classes,
+    width,
     testimonial: { title, cover },
     testimonials,
   } = props;
@@ -50,24 +49,43 @@ const TestimonialSection = (props) => {
 
   return (
     <Grid container className={localClasses.root}>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={5} lg={5} xl={4}>
         <Box
           aria-label="about-description-area"
           width="100%"
-          height={400}
+          height={width === "xs" ? 100 : width === "sm" ? 100 : 400}
           maxHeight={400}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xl: 20, xs: 2 }}
+          mt={width === "xs" ? 10 : width === "sm" ? 10 : undefined}
         >
-          <Box paddingBottom={2}>
-            <BwSectionName color="secondary">{title}</BwSectionName>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <BwSectionName
+              color="secondary"
+              size={
+                width === "xs"
+                  ? "small"
+                  : width === "sm"
+                  ? "small"
+                  : width === "md"
+                  ? "small"
+                  : "large"
+              }
+            >
+              {title}
+            </BwSectionName>
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={12} md={7} lg={7} xl={8}>
         <Box
           aria-label="about-description-area"
           width="100%"
@@ -77,7 +95,9 @@ const TestimonialSection = (props) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xs: 2, xl: 5 }}
+          textAlign="center"
+          px={{ xs: 3, sm: 4, md: 4, lg: 5, xl: 5 }}
+          mb={width === "xs" ? 5 : width === "sm" ? 5 : undefined}
         >
           <Box
             width="100%"
@@ -105,10 +125,11 @@ const TestimonialSection = (props) => {
     </Grid>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(TestimonialSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(TestimonialSection)
+);

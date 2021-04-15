@@ -53,7 +53,7 @@ const Ss_ContactForm = (props) => {
   const localClasses = useStyles();
 
   return (
-    <Box px={5}>
+    <Box px={{ xs: 1, sm: 3, md: 3, lg: 4, xl: 5 }} maxWidth={600} mx={"auto"}>
       <form>
         <Grid container spacing={3}>
           {form.map((item, i) =>

@@ -9,8 +9,8 @@
 // #hooks :
 
 // #components :
-import { BwSectionName } from "components/UI";
-import { BwTeamCard } from "components/UI";
+import { BwSectionName, BwTeamCard, BwSeparator } from "components/UI";
+
 // #validations :
 
 // #material-ui :
@@ -20,7 +20,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
+  withWidth,
   Typography,
   Container,
 } from "@material-ui/core";
@@ -34,6 +34,7 @@ const useStyles = makeStyles({
 const TeamSection = (props) => {
   const {
     classes,
+    width,
     team: { title, excerpt },
     teams,
   } = props;
@@ -51,35 +52,39 @@ const TeamSection = (props) => {
             justifyContent="center"
             alignItems="center"
             paddingTop={20}
-            px={{ xl: 20, xs: 2 }}
           >
             <Box paddingTop={3} paddingBottom={2}>
-              <BwSectionName>{title}</BwSectionName>
+              <BwSectionName size={width === "xs" ? "small" : undefined}>
+                {title}
+              </BwSectionName>
             </Box>
 
             <Box
               paddingTop={6}
               paddingBottom={10}
               textAlign="center"
-              px={{ xs: 2, xl: 20 }}
+              px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
             >
               <Typography variant="body1" color="textPrimary">
                 {excerpt}
               </Typography>
             </Box>
 
-            <Box aria-label="separator" my={3}>
-              <img src="/separatorBlack.png" />
-            </Box>
+            <BwSeparator color="primary" size="large" marginY={3} />
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Box
             aria-label="about-us"
             display="flex"
+            flexDirection={
+              width === "xs" ? "column" : width === "sm" ? "column" : "row"
+            }
             justifyContent="center"
-            flexWrap="wrap"
-            marginTop={4}
+            alignItems={
+              width === "xs" ? "center" : width === "sm" ? "center" : undefined
+            }
+            mt={3}
           >
             {teams.map((item, i) => (
               <BwTeamCard
@@ -96,10 +101,11 @@ const TeamSection = (props) => {
     </Container>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(TeamSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(TeamSection)
+);

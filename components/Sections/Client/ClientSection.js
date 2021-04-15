@@ -20,9 +20,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
-  Typography,
-  Container,
+  withWidth,
 } from "@material-ui/core";
 
 // #other :
@@ -38,13 +36,14 @@ const useStyles = makeStyles((theme) => ({
 const ClientSection = (props) => {
   const {
     classes,
+    width,
     client: { title, cover },
   } = props;
   const localClasses = useStyles({ bgImage: `url('${useImageUrl(cover)}')` });
 
   return (
     <Grid container className={localClasses.root}>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={5} lg={4} xl={4}>
         <Box
           aria-label="about-description-area"
           width="100%"
@@ -54,24 +53,33 @@ const ClientSection = (props) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xl: 20, xs: 2 }}
         >
-          <Box paddingBottom={2}>
-            <BwSectionName color="secondary">{title}</BwSectionName>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <BwSectionName
+              color="secondary"
+              size={width === "xs" ? "small" : "large"}
+            >
+              {title}
+            </BwSectionName>
           </Box>
         </Box>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={12} md={7} lg={8} xl={8}>
         <Box
           aria-label="about-description-area"
           width="100%"
-          height={285}
+          height={{ xs: 0, sm: 0, md: 285 }}
           maxHeight={285}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xl: 20, xs: 2 }}
         >
           <Box paddingBottom={2}></Box>
         </Box>
@@ -79,10 +87,12 @@ const ClientSection = (props) => {
     </Grid>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(ClientSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      //   ...(theme)
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(ClientSection)
+);

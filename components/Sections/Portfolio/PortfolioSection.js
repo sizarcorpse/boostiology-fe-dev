@@ -11,6 +11,7 @@ import { useImageUrl } from "utils/useImageUrl";
 // #components :
 import { BwSectionName } from "components/UI";
 import { BwIconText } from "components/UI";
+import Ss_Portfolio from "./ss_portfolio";
 // #validations :
 
 // #material-ui :
@@ -20,9 +21,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
-  Typography,
-  Container,
+  withWidth,
 } from "@material-ui/core";
 
 // #other :
@@ -38,7 +37,9 @@ const useStyles = makeStyles((theme) => ({
 const PortfolioSection = (props) => {
   const {
     classes,
+    width,
     portfolio: { title, cover },
+    portfolios,
   } = props;
   const localClasses = useStyles({ bgImage: `url('${useImageUrl(cover)}')` });
 
@@ -58,17 +59,29 @@ const PortfolioSection = (props) => {
           className={localClasses.root}
         >
           <Box paddingTop={3} paddingBottom={2}>
-            <BwSectionName color="secondary">{title}</BwSectionName>
+            <BwSectionName
+              color="secondary"
+              size={width === "xs" ? "small" : "large"}
+            >
+              {title}
+            </BwSectionName>
           </Box>
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <Box width="100%">
+          <Ss_Portfolio portfolios={portfolios} />
         </Box>
       </Grid>
     </Grid>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(PortfolioSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      //   ...(theme)
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(PortfolioSection)
+);

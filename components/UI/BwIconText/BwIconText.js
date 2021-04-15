@@ -38,7 +38,7 @@ const BwIconText = (props) => {
       maxWidth={390}
       width="100%"
       px={3}
-      py={2}
+      py={1}
       className={localClasses.root}
     >
       <Box

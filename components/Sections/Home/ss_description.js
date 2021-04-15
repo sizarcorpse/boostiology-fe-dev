@@ -5,6 +5,7 @@ import {
   makeStyles,
   Box,
   Typography,
+  withWidth,
   CssBaseline,
 } from "@material-ui/core";
 
@@ -19,30 +20,33 @@ const useStyles = makeStyles((theme) => ({
   title: {
     letterSpacing: 10,
   },
+  title_mobile: {
+    letterSpacing: 5,
+  },
 }));
 
 const Ss_Description = (props) => {
-  const { classes, description } = props;
+  const { classes, width, description } = props;
   const localClasses = useStyles();
 
   return (
     <Box
-      aria-label="description-area"
+      aria-label="description"
       width="100%"
       height="100%"
-      px="64px"
+      px={width === "xs" ? 7 : 8}
       display="flex"
       alignItems="flex-start"
       justifyContent="center"
       flexDirection="column"
     >
-      <CssBaseline />
-      <Box aria-label="title" my={1.5}>
+      <Box aria-label="title" my={2}>
         <Typography
-          aria-label="title-main"
-          variant="h2"
+          variant={width === "xs" ? "h4" : "h2"}
           color="secondary"
-          className={localClasses.title}
+          className={
+            width === "xs" ? localClasses.title_mobile : localClasses.title
+          }
         >
           {description.title}
         </Typography>
@@ -68,9 +72,11 @@ const Ss_Description = (props) => {
     </Box>
   );
 };
-export default withStyles(
-  (theme) => ({
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(Ss_Description);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(Ss_Description)
+);

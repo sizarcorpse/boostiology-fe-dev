@@ -9,8 +9,7 @@
 // #hooks :
 import { useImageUrl } from "utils/useImageUrl";
 // #components :
-import { BwSectionName } from "components/UI";
-import { BwIconText } from "components/UI";
+
 // #validations :
 
 // #material-ui :
@@ -20,9 +19,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
-  Typography,
-  Container,
+  withWidth,
 } from "@material-ui/core";
 
 // #other :
@@ -38,38 +35,50 @@ const useStyles = makeStyles((theme) => ({
 const TimerSection = (props) => {
   const {
     classes,
+    width,
     timer: { title, cover },
   } = props;
   const localClasses = useStyles({ bgImage: `url('${useImageUrl(cover)}')` });
 
   return (
     <Grid container className={localClasses.root}>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={5} lg={4} xl={4}>
         <Box
           aria-label="about-description-area"
           width="100%"
-          height={260}
-          maxHeight={260}
+          height={285}
+          maxHeight={285}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xl: 20, xs: 2 }}
         >
-          <Box paddingBottom={2}></Box>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            {/* <BwSectionName
+              color="secondary"
+              size={width === "xs" ? "small" : "large"}
+            >
+              {title}
+            </BwSectionName> */}
+          </Box>
         </Box>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} sm={12} md={7} lg={8} xl={8}>
         <Box
           aria-label="about-description-area"
           width="100%"
-          height={260}
-          maxHeight={260}
+          height={{ xs: 0, sm: 0, md: 285 }}
+          maxHeight={285}
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          px={{ xl: 20, xs: 2 }}
         >
           <Box paddingBottom={2}></Box>
         </Box>
@@ -77,10 +86,11 @@ const TimerSection = (props) => {
     </Grid>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(TimerSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(TimerSection)
+);

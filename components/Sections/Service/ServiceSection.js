@@ -50,7 +50,7 @@ const ServiceSection = (props) => {
 
   return (
     <Grid container>
-      <Grid item xs={12} xl={5}>
+      <Grid item xs={12} sm={12} md={4} lg={5} xl={5}>
         <Box aria-label="about-description-area" width="100%">
           <Parallax bgImage={useImageUrl(cover)} strength={100}>
             <Box
@@ -61,7 +61,7 @@ const ServiceSection = (props) => {
           </Parallax>
         </Box>
       </Grid>
-      <Grid item xs={12} xl={7}>
+      <Grid item xs={12} sm={12} md={8} lg={7} xl={7}>
         <Ss_Services services={services} />
       </Grid>
     </Grid>

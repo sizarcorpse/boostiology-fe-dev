@@ -38,10 +38,10 @@ const HomeSection = (props) => {
   const localClasses = useStyles();
 
   return (
-    <Grid container component="main">
+    <Grid container component="main" aria-label="section-home">
       <CssBaseline />
-      <Grid item xs={12} aria-label="home-intro">
-        <Box aria-label="home-intro-area" width="100%">
+      <Grid item xs={12} aria-label="subsection-landing">
+        <Box aria-label="landing-area" width="100%">
           <Parallax bgImage={useImageUrl(landing.cover)} strength={500}>
             <Box
               height={640}
@@ -53,19 +53,17 @@ const HomeSection = (props) => {
           </Parallax>
         </Box>
       </Grid>
-      <Grid item xs={12} aria-label="home-description">
-        <Box aria-label="home-desc-area" width="100%">
-          <Box aria-label="home-intro-area" width="100%">
-            <Parallax bgImage={useImageUrl(description.cover)} strength={800}>
-              <Box
-                height={320}
-                width="100%"
-                className={localClasses.parallaxBackground}
-              >
-                <Ss_Description description={description} />
-              </Box>
-            </Parallax>
-          </Box>
+      <Grid item xs={12} aria-label="subsection-description">
+        <Box aria-label="description-area" width="100%">
+          <Parallax bgImage={useImageUrl(description.cover)} strength={800}>
+            <Box
+              height={{ xs: 400, sm: 400, md: 320, lg: 320, xl: 320 }}
+              width="100%"
+              className={localClasses.parallaxBackground}
+            >
+              <Ss_Description description={description} />
+            </Box>
+          </Parallax>
         </Box>
       </Grid>
     </Grid>

@@ -9,8 +9,7 @@
 // #hooks :
 
 // #components :
-import { BwSectionName } from "components/UI";
-import { BwTeamCard } from "components/UI";
+import { BwSectionName, BwSeparator } from "components/UI";
 
 import Ss_ContactForm from "./ss_contactForm";
 import Ss_Address from "./ss_address";
@@ -23,7 +22,7 @@ import {
   makeStyles,
   Grid,
   Box,
-  CssBaseline,
+  withWidth,
   Typography,
   Container,
 } from "@material-ui/core";
@@ -37,6 +36,7 @@ const useStyles = makeStyles({
 const ContactSection = (props) => {
   const {
     classes,
+    width,
     contact: { title, excerpt },
     form,
     submit,
@@ -56,35 +56,38 @@ const ContactSection = (props) => {
             justifyContent="center"
             alignItems="center"
             paddingTop={20}
-            px={{ xl: 20, xs: 2 }}
           >
             <Box paddingTop={3} paddingBottom={2}>
-              <BwSectionName>{title}</BwSectionName>
+              <BwSectionName size={width === "xs" ? "small" : undefined}>
+                {title}
+              </BwSectionName>
             </Box>
 
             <Box
               paddingTop={6}
               paddingBottom={10}
               textAlign="center"
-              px={{ xs: 2, xl: 20 }}
+              px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
             >
               <Typography variant="body1" color="textPrimary">
                 {excerpt}
               </Typography>
             </Box>
-
-            <Box aria-label="separator" mb={3}>
-              <img src="/separatorBlack.png" />
-            </Box>
+            <BwSeparator color="primary" size="large" marginY={3} />
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box my={5} p={5} display="flex" justifyContent="center">
+          <Box
+            my={5}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
             <Grid container>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Ss_Address address={address} />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Ss_ContactForm form={form} submit={submit} />
               </Grid>
             </Grid>
@@ -94,10 +97,11 @@ const ContactSection = (props) => {
     </Container>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(ContactSection);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(ContactSection)
+);

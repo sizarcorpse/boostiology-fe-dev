@@ -25,10 +25,8 @@ import {
   AppBar,
   Box,
   Typography,
+  withWidth,
 } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import HelpIcon from "@material-ui/icons/Help";
 
 // #other :
 
@@ -36,8 +34,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    maxHeight: 470,
+
     padding: theme.spacing(5, 5),
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(5, 1),
+    },
     backgroundColor: "white",
   },
   appBar: {
@@ -73,7 +74,7 @@ function a11yProps(index) {
 }
 
 const Ss_Services = (props) => {
-  const { classes, services } = props;
+  const { classes, width, services } = props;
   const [value, setValue] = useState(0);
   const localClasses = useStyles();
 
@@ -82,7 +83,7 @@ const Ss_Services = (props) => {
   };
 
   return (
-    <Box className={localClasses.root}>
+    <Box className={localClasses.root} maxHeight={width === "xs" ? 650 : 470}>
       <AppBar
         position="static"
         color="secondary"
@@ -125,7 +126,7 @@ const Ss_Services = (props) => {
             <Box aria-label="separator" my={2}>
               <Image src="/separatorBlack.png" height={8} width={113} />
             </Box>
-            <Box my={2}>
+            <Box my={2} textAlign="center">
               <Typography variant="body1">{item.description}</Typography>
             </Box>
             <Box my={1}>
@@ -137,10 +138,12 @@ const Ss_Services = (props) => {
     </Box>
   );
 };
-export default withStyles(
-  (theme) => ({
-    //   ...(theme)
-    ...ThemeDistributor(theme),
-  }),
-  { withTheme: true }
-)(Ss_Services);
+export default withWidth()(
+  withStyles(
+    (theme) => ({
+      //   ...(theme)
+      ...ThemeDistributor(theme),
+    }),
+    { withTheme: true }
+  )(Ss_Services)
+);

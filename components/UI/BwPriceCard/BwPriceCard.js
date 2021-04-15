@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { useImageUrl } from "utils/useImageUrl";
 
-import { BwButton } from "components/UI";
+import { BwButton, BwSeparator } from "components/UI";
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
 import { withStyles, makeStyles, Box, Typography } from "@material-ui/core";
@@ -59,9 +59,7 @@ const BwPriceCard = (props) => {
         </Typography>
       </Box>
 
-      <Box aria-label="separator" my={2}>
-        <Image src="/separatorBlack.png" height={9} width={130} />
-      </Box>
+      <BwSeparator color="primary" size="small" marginY={2} />
 
       <Box my={2} display="flex" alignItems="flex-end">
         <Typography variant="h2" className={localClasses.price}>
@@ -82,9 +80,7 @@ const BwPriceCard = (props) => {
         />
       </Box>
 
-      <Box aria-label="separator" mt={3} mb={2}>
-        <Image src="/separatorBlack.png" height={10} width={130} />
-      </Box>
+      <BwSeparator color="primary" size="small" marginY={2} />
 
       <Box aria-label="separator" my={2}>
         <Typography variant="body1" className={localClasses.feature}>

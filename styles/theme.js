@@ -40,7 +40,13 @@ const theme = createMuiTheme({
       letterSpacing: 1,
     },
     h5: {},
-    h6: {},
+    h6: {
+      fontSize: "1.5em",
+      letterSpacing: ".3em",
+      textTransform: "uppercase",
+      fontWeight: 700,
+      lineHeight: "1em",
+    },
     body1: {
       fontSize: "1em",
       fontWeight: 300,
