@@ -38,6 +38,7 @@ const PortfolioSection = (props) => {
   const {
     classes,
     width,
+    contentOnly,
     portfolio: { title, cover },
     portfolios,
   } = props;
@@ -45,29 +46,32 @@ const PortfolioSection = (props) => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Box
-          aria-label="about-description-area"
-          width="100%"
-          height={300}
-          maxHeight={300}
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          px={{ xl: 20, xs: 2 }}
-          className={localClasses.root}
-        >
-          <Box paddingTop={3} paddingBottom={2}>
-            <BwSectionName
-              color="secondary"
-              size={width === "xs" ? "small" : "large"}
-            >
-              {title}
-            </BwSectionName>
+      {contentOnly ? null : (
+        <Grid item xs={12}>
+          <Box
+            aria-label="about-description-area"
+            width="100%"
+            height={300}
+            maxHeight={300}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            px={{ xl: 20, xs: 2 }}
+            className={localClasses.root}
+          >
+            <Box paddingTop={3} paddingBottom={2}>
+              <BwSectionName
+                color="secondary"
+                size={width === "xs" ? "small" : "large"}
+              >
+                {title}
+              </BwSectionName>
+            </Box>
           </Box>
-        </Box>
-      </Grid>
+        </Grid>
+      )}
+
       <Grid item xs={12}>
         <Box width="100%">
           <Ss_Portfolio portfolios={portfolios} />

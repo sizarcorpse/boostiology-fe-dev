@@ -25,6 +25,7 @@ import {
   withWidth,
   Typography,
   Container,
+  Hidden,
 } from "@material-ui/core";
 
 // #other :
@@ -37,6 +38,7 @@ const ContactSection = (props) => {
   const {
     classes,
     width,
+    formOnly,
     contact: { title, excerpt },
     form,
     submit,
@@ -47,35 +49,43 @@ const ContactSection = (props) => {
   return (
     <Container maxWidth="lg">
       <Grid container>
-        <Grid item xs={12}>
-          <Box
-            aria-label="about-description-area"
-            width="100%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            paddingTop={20}
-          >
-            <Box paddingTop={3} paddingBottom={2}>
-              <BwSectionName size={width === "xs" ? "small" : undefined}>
-                {title}
-              </BwSectionName>
-            </Box>
-
+        {formOnly ? (
+          <Grid item xs={12}>
+            {" "}
+            <Box height={30}> </Box>
+          </Grid>
+        ) : (
+          <Grid item xs={12}>
             <Box
-              paddingTop={6}
-              paddingBottom={10}
-              textAlign="center"
-              px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
+              aria-label="about-description-area"
+              width="100%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              paddingTop={20}
             >
-              <Typography variant="body1" color="textPrimary">
-                {excerpt}
-              </Typography>
+              <Box paddingTop={3} paddingBottom={2}>
+                <BwSectionName size={width === "xs" ? "small" : undefined}>
+                  {title}
+                </BwSectionName>
+              </Box>
+
+              <Box
+                paddingTop={6}
+                paddingBottom={10}
+                textAlign="center"
+                px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
+              >
+                <Typography variant="body1" color="textPrimary">
+                  {excerpt}
+                </Typography>
+              </Box>
+              <BwSeparator color="primary" size="large" marginY={3} />
             </Box>
-            <BwSeparator color="primary" size="large" marginY={3} />
-          </Box>
-        </Grid>
+          </Grid>
+        )}
+
         <Grid item xs={12}>
           <Box
             my={5}

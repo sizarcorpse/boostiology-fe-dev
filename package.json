@@ -19,6 +19,7 @@
     "react-lottie": "^1.2.3",
     "react-masonry-css": "^1.0.16",
     "react-parallax": "^3.2.1",
+    "react-swipeable-views": "^0.13.9",
     "sass": "^1.32.8",
     "swiper": "^6.5.3",
     "swr": "^0.5.5"

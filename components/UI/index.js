@@ -6,3 +6,4 @@ export { default as BwPriceCard } from "./BwPriceCard";
 export { default as BwTestimonialCard } from "./BwTestimonialCard";
 export { default as BwPortfolioCard } from "./BwPortfolioCard";
 export { default as BwSeparator } from "./BwSeparator";
+export { default as BwPageHeader } from "./BwPageHeader";

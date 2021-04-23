@@ -10,9 +10,11 @@ import Head from "next/head";
 
 // #hooks :
 import { FetchNav } from "actions/FetchNav";
+import { FetchFooter } from "actions/FetchFooter";
 
 // #components :
 import { Navigation } from "components/Navigation";
+import { Footer } from "components/Footer";
 
 // #material-ui :
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -27,7 +29,7 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 
-function MyApp({ Component, pageProps, navigation }) {
+function MyApp({ Component, pageProps, navigation, footer }) {
   const router = useRouter();
 
   return (
@@ -48,6 +50,7 @@ function MyApp({ Component, pageProps, navigation }) {
         >
           <Navigation navigation={navigation} />
           <Component {...pageProps} />
+          <Footer footer={footer} />
         </SWRConfig>
       </ThemeProvider>
     </>
@@ -60,6 +63,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
 
   const navigation = await FetchNav({ context: ctx });
+  const footer = await FetchFooter({ context: ctx });
 
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
@@ -68,6 +72,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   return {
     pageProps,
     navigation,
+    footer,
   };
 };
 MyApp.propTypes = {

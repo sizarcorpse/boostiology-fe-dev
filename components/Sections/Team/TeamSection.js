@@ -35,6 +35,7 @@ const TeamSection = (props) => {
   const {
     classes,
     width,
+    contentOnly,
     team: { title, excerpt },
     teams,
   } = props;
@@ -51,7 +52,7 @@ const TeamSection = (props) => {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            paddingTop={20}
+            paddingTop={contentOnly ? 0 : 20}
           >
             <Box paddingTop={3} paddingBottom={2}>
               <BwSectionName size={width === "xs" ? "small" : undefined}>

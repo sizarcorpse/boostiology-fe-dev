@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 // #next :
 // import getConfig from 'next/config';
 // import {useRouter} from 'next/router';
-// import Link from 'next/link';
+import Link from "next/link";
 // import Image from 'next/image';
 // import useSWR, { trigger, mutate } from 'swr';
 // #contexts :
@@ -94,18 +94,20 @@ const Navigation = (props) => {
             <Box aria-label="navigation-menu" display="flex">
               {navigation.map((item, i) => (
                 <Box key={i} mx={2} display="flex">
-                  <Button
-                    disableRipple
-                    disableFocusRipple
-                    disableElevation
-                    size="small"
-                    endIcon={
-                      item.subitem.length > 0 ? <ExpandMoreIcon /> : undefined
-                    }
-                    className={localClasses.button}
-                  >
-                    {item.label}
-                  </Button>
+                  <Link href={item.path ? `${item.path}` : `/`}>
+                    <Button
+                      disableRipple
+                      disableFocusRipple
+                      disableElevation
+                      size="small"
+                      endIcon={
+                        item.subitem.length > 0 ? <ExpandMoreIcon /> : undefined
+                      }
+                      className={localClasses.button}
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
                 </Box>
               ))}
             </Box>

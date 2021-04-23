@@ -27,6 +27,7 @@ import {
 } from "@material-ui/core";
 
 // #other :
+import _ from "lodash";
 
 const useStyles = makeStyles({
   root: {},
@@ -38,42 +39,51 @@ const AboutSection = (props) => {
     width,
     about: { title, excerpt },
     abouts,
+    contentOnly,
   } = props;
   const localClasses = useStyles();
 
   return (
     <Container maxWidth="lg">
       <Grid container>
-        <Grid item xs={12}>
-          <Box
-            aria-label="about-description-area"
-            width="100%"
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            paddingTop={20}
-          >
-            <Box paddingTop={3} paddingBottom={2}>
-              <BwSectionName size={width === "xs" ? "small" : undefined}>
-                {title}
-              </BwSectionName>
-            </Box>
-
+        {contentOnly ? (
+          <Grid item xs={12}>
+            {" "}
+            <Box height={30}> </Box>
+          </Grid>
+        ) : (
+          <Grid item xs={12}>
             <Box
-              paddingTop={6}
-              paddingBottom={10}
-              textAlign="center"
-              px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
+              aria-label="about-description-area"
+              width="100%"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              paddingTop={20}
             >
-              <Typography variant="body1" color="textPrimary">
-                {excerpt}
-              </Typography>
-            </Box>
+              <Box paddingTop={3} paddingBottom={2}>
+                <BwSectionName size={width === "xs" ? "small" : undefined}>
+                  {title}
+                </BwSectionName>
+              </Box>
 
-            <BwSeparator color="primary" size="large" marginY={3} />
-          </Box>
-        </Grid>
+              <Box
+                paddingTop={6}
+                paddingBottom={10}
+                textAlign="center"
+                px={{ xs: 0, sm: 3, md: 10, lg: 18, xl: 20 }}
+              >
+                <Typography variant="body1" color="textPrimary">
+                  {excerpt}
+                </Typography>
+              </Box>
+
+              <BwSeparator color="primary" size="large" marginY={3} />
+            </Box>
+          </Grid>
+        )}
+
         <Grid item xs={12}>
           <Box
             aria-label="about-us"
@@ -82,12 +92,15 @@ const AboutSection = (props) => {
             justifyContent="center"
             alignItems={width === "xs" ? "center" : undefined}
             my={3}
+            flexWrap="wrap"
           >
-            {abouts.map((item, i) => (
-              <BwIconText title={item.title} icon={item.icon} key={i}>
-                {item.excerpt}
-              </BwIconText>
-            ))}
+            {_.slice(abouts, 0, contentOnly ? abouts.length : 3).map(
+              (item, i) => (
+                <BwIconText title={item.title} icon={item.icon} key={i}>
+                  {item.excerpt}
+                </BwIconText>
+              )
+            )}
           </Box>
           <Box display="flex" justifyContent="center">
             <BwSeparator color="primary" size="large" marginY={10} />

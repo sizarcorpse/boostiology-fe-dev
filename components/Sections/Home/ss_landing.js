@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     wordSpacing: 0,
   },
 
-  subtile_mobile: {
+  subtitle_mobile: {
     fontSize: 14,
   },
 }));
@@ -68,7 +68,7 @@ const Ss_Landing = (props) => {
         <Typography
           variant="h4"
           color="secondary"
-          className={width === "xs" ? localClasses.subtile_mobile : undefined}
+          className={width === "xs" ? localClasses.subtitle_mobile : undefined}
         >
           {landing.subtitle}
         </Typography>

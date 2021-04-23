@@ -1,7 +1,7 @@
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
 import { withStyles, makeStyles, Button } from "@material-ui/core";
-
+import Link from "next/link";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 50,
@@ -96,11 +96,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BwButton = (props) => {
-  const { classes, children, color } = props;
+  const { classes, children, color, goto } = props;
 
   const localClasses = useStyles({ color });
 
-  return <Button className={localClasses.root}>{children}</Button>;
+  return (
+    <Link href={goto ? `${goto}` : ``}>
+      <Button className={localClasses.root}>{children}</Button>
+    </Link>
+  );
 };
 export default withStyles(
   (theme) => ({

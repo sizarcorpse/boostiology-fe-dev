@@ -52,7 +52,7 @@ const BwPortfolioCard = (props) => {
     <Box className={localClasses.root}>
       <Image
         src={useImageUrl(cover.formats.large)}
-        height={isFeatured === true ? 475 * 2 : 475}
+        height={475}
         width={635}
         layout="responsive"
         objectFit="cover"
@@ -67,8 +67,8 @@ const BwPortfolioCard = (props) => {
               size === "small"
                 ? localClasses.title_mobile
                 : size === "large"
-                ? localClasses.tilte
-                : localClasses.tilte
+                ? localClasses.title
+                : localClasses.title
             }
           >
             {title}

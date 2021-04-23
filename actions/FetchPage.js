@@ -10,6 +10,7 @@ export const FetchHomePage = async () => {
 
   return scHome;
 };
+
 export const FetchContactPage = async () => {
   const { publicRuntimeConfig } = getConfig();
 
@@ -17,4 +18,22 @@ export const FetchContactPage = async () => {
   const scContact = await res.json();
 
   return scContact;
+};
+
+export const FetchAboutPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/about-page`);
+  const scAbout = await res.json();
+
+  return scAbout;
+};
+
+export const FetchPortfolioPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/portfolio-page`);
+  const scPortfolio = await res.json();
+
+  return scPortfolio;
 };
