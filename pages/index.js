@@ -1,9 +1,9 @@
 // #next :
 // import getConfig from 'next/config';
-// import {useRouter} from 'next/router';
 // import Link from 'next/link';
 // import Image from 'next/image';
-// import useSWR, { trigger, mutate } from 'swr';
+import Head from "next/head";
+
 // #contexts :
 
 // #hooks :
@@ -103,6 +103,11 @@ const HomePage = (props) => {
   return (
     <Grid container component="main">
       <CssBaseline />
+      <Head>
+        <title>Home Page</title>
+        <meta name="description" content="" />
+      </Head>
+
       <Grid item xs={12}>
         <Paper>
           <HomeSection landing={landing} description={description} />

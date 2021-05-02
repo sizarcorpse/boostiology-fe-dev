@@ -60,7 +60,7 @@ const AboutSection = (props) => {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              paddingTop={20}
+              pt={20}
             >
               <Box paddingTop={3} paddingBottom={2}>
                 <BwSectionName size={width === "xs" ? "small" : undefined}>

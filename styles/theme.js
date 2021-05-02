@@ -48,7 +48,7 @@ const theme = createMuiTheme({
       lineHeight: "1em",
     },
     body1: {
-      fontSize: "1em",
+      fontSize: "1.1em",
       fontWeight: 300,
       lineHeight: "1.7em",
     },

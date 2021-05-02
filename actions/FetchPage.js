@@ -37,3 +37,39 @@ export const FetchPortfolioPage = async () => {
 
   return scPortfolio;
 };
+
+export const FetchBlogPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/blog-page`);
+  const scBlog = await res.json();
+
+  return scBlog;
+};
+
+export const FetchSingleBlogPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/blog-post-page`);
+  const scBlog = await res.json();
+
+  return scBlog;
+};
+
+export const FetchSearchPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/search-page`);
+  const scSearch = await res.json();
+
+  return scSearch;
+};
+
+export const FetchCategoryPage = async () => {
+  const { publicRuntimeConfig } = getConfig();
+
+  const res = await fetch(`${publicRuntimeConfig.ROOT_API_URL}/category-page`);
+  const scCat = await res.json();
+
+  return scCat;
+};

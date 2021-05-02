@@ -1,4 +1,5 @@
 import { BwButton } from "components/UI";
+import Image from "next/image";
 // #material-ui :
 import { ThemeDistributor } from "styles/ThemeDistributor";
 import {
@@ -48,7 +49,7 @@ const Ss_Newsletters = (props) => {
         <Grid container>
           <Grid item xs={12}>
             <Box aria-label="address" width="100%" mb={width === "xs" ? 2 : 4}>
-              <Box aria-label="title" mb={width === "xs" ? 1 : 4}>
+              <Box aria-label="title" mb={width === "xs" ? 1 : 3}>
                 <Typography
                   variant="h4"
                   color="secondary"
@@ -56,6 +57,14 @@ const Ss_Newsletters = (props) => {
                 >
                   {title}
                 </Typography>
+              </Box>
+              <Box aria-label="separator" my={2}>
+                <Image
+                  src="/lineSeparatorWhite.png"
+                  height={20}
+                  width={40}
+                  alt="separator"
+                />
               </Box>
               <Box aria-label="info">
                 <Typography variant="body1" className={localClasses.subtitle}>

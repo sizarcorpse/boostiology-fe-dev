@@ -108,7 +108,7 @@ const Footer = (props) => {
               aria-label="column-1"
             >
               <Box aria-label="address" width="100%" mb={4}>
-                <Box aria-label="title" mb={4}>
+                <Box aria-label="title" mb={3}>
                   <Typography
                     variant="h4"
                     color="secondary"
@@ -116,6 +116,14 @@ const Footer = (props) => {
                   >
                     {address.title}
                   </Typography>
+                </Box>
+                <Box aria-label="separator" my={2}>
+                  <Image
+                    src="/lineSeparatorWhite.png"
+                    height={20}
+                    width={40}
+                    alt="separator"
+                  />
                 </Box>
                 <Box aria-label="info">
                   <Typography
@@ -142,7 +150,7 @@ const Footer = (props) => {
               aria-label="column-2"
             >
               <Box aria-label="address" width="100%" mb={4}>
-                <Box aria-label="title" mb={4}>
+                <Box aria-label="title" mb={3}>
                   <Typography
                     variant="h4"
                     color="secondary"
@@ -150,6 +158,14 @@ const Footer = (props) => {
                   >
                     {payment.title}
                   </Typography>
+                </Box>
+                <Box aria-label="separator" my={2}>
+                  <Image
+                    src="/lineSeparatorWhite.png"
+                    height={20}
+                    width={40}
+                    alt="separator"
+                  />
                 </Box>
                 <Box
                   aria-label="info"
@@ -196,7 +212,7 @@ const Footer = (props) => {
               aria-label="column-4"
             >
               <Box aria-label="address" width="100%" mb={4}>
-                <Box aria-label="title" mb={width === "xs" ? 1 : 4}>
+                <Box aria-label="title" mb={width === "xs" ? 1 : 3}>
                   <Typography
                     variant="h4"
                     color="secondary"
@@ -204,6 +220,14 @@ const Footer = (props) => {
                   >
                     {connect.title}
                   </Typography>
+                </Box>
+                <Box aria-label="separator" my={2}>
+                  <Image
+                    src="/lineSeparatorWhite.png"
+                    height={20}
+                    width={40}
+                    alt="separator"
+                  />
                 </Box>
                 <Box aria-label="info">
                   <Typography
