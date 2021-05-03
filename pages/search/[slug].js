@@ -17,7 +17,7 @@ import {
 
 // #components :
 import { BwPageHeader } from "components/UI";
-import { BlogSection, BlogSideBar } from "components/Blogs";
+import { BlogBySearchSection, BlogSideBar } from "components/Blogs";
 
 // #validations :
 
@@ -96,7 +96,7 @@ const BlogPage = (props) => {
           <Container maxWidth="lg">
             <Grid container>
               <Grid item xs={12} sm={12} md={8} lg={9} xl={9}>
-                <BlogSection
+                <BlogBySearchSection
                   blogs={blogs}
                   button={readMore}
                   notFound={notFound}
